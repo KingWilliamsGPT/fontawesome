@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>fa home</title>
+	<!-- fonts -->
+	<link rel="stylesheet" type="text/css" href="">
+	<!--End fonts -->
+
+	<link rel="stylesheet" type="text/css" href="{% static 'admin/css/fonts.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+	<main>
+		<div class="jumbotron rounded-0 bg-dark">
+			<div class="container">
+				<h1 class="jumbotron-heading text-white-50">Font awesome </h1>
+				<span class="text-muted">More details..</span>
+			</div>
+		</div>
+		
+		<div class="container px-0 mt-5 main-cont border border-light rounded">
+			<nav class="main-nav nav justify-content-between bg-dark rounded-top px-5 py-4">
+				<ul class="nav">
+					<li class="nav-item">
+						<a href="{% url 'index' %}" class="nav-link active"><strong>All</strong></a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link text-muted">svgs</a>
+					</li>
+				</ul>
+				<form class="form" action="{% url 'search_page' %}" method="GET">
+					<div class="input-group shadow-sm">
+						<input type="search" name="{{ query_name }}" value="{{ query_placeholder_value }}" class="form-control" placeholder="Search icon" autofocus="autofocus">
+						<div class="input-group-append">
+							<button class="input-group-text" type="submit"><i class="fas fa-search"></i></button>
+						</div>
+					</div>					
+				</form>
+			</nav>
+			<div class="frame container my-3">
+				<h2 class='text-muted h3 d-inline-block ml-5'>{{ icons|length }}<small> results for</small> <q><b>{{ query_placeholder_value }}</b></q></h2>
+				<!-- <span class="badge badge-primary ml-3 p-1 d-inline-block align-middle bg-secondary">200</span> -->
+				<hr>
+				<div class="entries mt-5 d-sm-flex flex-wrap justify-content-around">
+
+				{% for icon in icons %}
+					<div class="entry rounded shadow-sm text-center m-4 p-5">
+						<div class="preview d-flex">
+							<div class="icon">
+								<div class="position-relative mt-5	">
+									<i class="icon fab fa-{{ icon.0 }}"></i>
+									<i class="icon fas fa-{{ icon.0 }}"></i>
+								</div>
+							</div>
+							<div class="details mt-4">
+								<span class="text-white text-left">{{ icon.0 }}</span>
+								<span class="text-primary">{{ icon.1 }}</span>
+							</div>
+						</div>
+					</div>
+				{% empty %}
+					<span class="text-muted text-lg">No search results</span>
+				{% endfor %}
+					{#<!-- <code class="pre">{{ icons }}</code> -->#}
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
+
+<!-- .fa,
+.fas,
+.far,
+.fal,
+.fad,
+.fab -->
+<!-- <div class="entry rounded shadow-sm ">
+	<div class="preview d-flex">
+		<i class="icon fab fa-facebook-f"></i>
+		<div class="details p-5 bg-dark">
+			<span class="text-white text-left">facebook-f</span>
+			<span class="text-primary">"f39e"</span>
+		</div>
+	</div>
+</div> -->

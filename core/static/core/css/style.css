@@ -1,0 +1,37 @@
+
+.position-relative{
+	position: relative!important;
+}
+
+.entry{
+	min-width: 40px;
+}
+.entry .preview{
+	flex-direction: column;
+	padding-top: 5px;
+}
+
+.entry .icon{
+	color: var(--dark);
+	font-size: 50px;
+}
+
+.entry .details span{
+	display: block;
+	color: #777 !important;
+}
+
+.entry .icon{
+	position: relative;
+}
+
+.entry .icon i{
+	position: absolute;
+	top: -50px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+}
+
+.form  .input-group-append i{
+	color: var(--dark)!important;
+}
